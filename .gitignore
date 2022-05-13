@@ -1,0 +1,9 @@
+*.iml
+*.ipr
+*.iws
+*.log
+.idea
+target
+build
+allure-report
+zephyrscale_result.json
