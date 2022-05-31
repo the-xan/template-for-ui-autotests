@@ -21,14 +21,20 @@ public class TestBase {
             BROWSER_NAME = System.getProperty("BName", "chrome"), // chrome
             BROWSER_VERSION = System.getProperty("BVersion", "50.0"), // 50.0 | 87.0
             BROWSER_SIZE = System.getProperty("BSize", "375x812"), // 1366x768 | 1600x900 | 1920x1080 | 375x812
-            SITE_STAND = System.getProperty("SiteStand", "site-dev"); // site-dev | site-test
+            SITE_STAND = System.getProperty("SiteStand", "site-test"); // site-dev | site-test
 
-    public final static String TEST_NAME = "TestTemplate";
+    public final static String
+            TEST_NAME = "TestTemplate",
+            REMOTE_URL = "http://172.16.177.203";
+
 
     @BeforeAll
     public static void setupBrowser() {
 
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
+        SelenideLogger.addListener("AllureSelenide",
+                new AllureSelenide()
+                        .screenshots(true).
+                        savePageSource(true));
 
         String testName = "TestTemplate";
         System.out.println("\nAutotest will run in \"" + RUN_START + "\"\n");
@@ -42,12 +48,14 @@ public class TestBase {
         }
 
         if (RUN_START.equals("selenoid")) {
-            Configuration.remote = "http://172.16.177.203:4444/wd/hub";
+            Configuration.remote = REMOTE_URL + ":4444/wd/hub";
             Configuration.browserSize = BROWSER_SIZE;
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName(BROWSER_NAME);
             capabilities.setVersion(BROWSER_VERSION);
             capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", true);
+            capabilities.setCapability("videoName", TEST_NAME + ".mp4");
             //capabilities.setCapability("enableLog", true);
             //capabilities.setCapability("logName", testName + ".log");
             capabilities.setCapability("name", testName);
