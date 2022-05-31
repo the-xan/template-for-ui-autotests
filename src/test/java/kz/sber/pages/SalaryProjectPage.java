@@ -12,14 +12,11 @@ public class SalaryProjectPage extends PageObjectsActions {
     @Step("Страница Зарплатного проекта - Создание заявки")
     public static void CreateRequestForSalaryProjectPage() {
         step("Открытие страницы \"Зарплатного проекта\" ", () -> {
-            open("https://sber.kz/small_business/salaryproject");
-            /*
             if (SITE_STAND.equals("site-test")) {
-            open(SITE_TEST + URL_PAGE);
+            open(SITE_TEST);
             } else {
-            open(SITE_DEV + URL_PAGE);
+            open(SITE_DEV);
             }
-            */
         });
 
         step("Нажать на кнопку \"Принимаю\" (Акцепт куки)", () -> {

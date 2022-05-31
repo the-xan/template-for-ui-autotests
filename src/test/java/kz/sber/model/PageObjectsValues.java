@@ -4,8 +4,8 @@ public class PageObjectsValues {
     // URL
     public static final String
             URL_PAGE = "/small_business/otherservices",
-            SITE_DEV = "https://sber-test.sberbank.kz",
-            SITE_TEST = "https://test.sber.kz",
+            SITE_DEV = "https://sber-test.sberbank.kz" + URL_PAGE,
+            SITE_TEST = "https://test.sber.kz" + URL_PAGE,
             IIN = "660208301021",  //966666666666 //660208301021
             PHONE_NUMBER = "7777777777", //7086233220 //7777777777
             SMS_CODE = "1234",
